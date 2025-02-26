@@ -1,3 +1,5 @@
+from sqlalchemy import create_engine, Column, Integer, String
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi import FastAPI, Depends
 import pathlib
 from pydantic import BaseModel
@@ -58,16 +60,6 @@ class Booking(BASE):
     timestamp = Column(String, nullable=False,
                        default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-    def __repr__(self):
-        return f"Clients(id={self.id}, name='{self.name}', timestamp='{self.timestamp}')"
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "client_name": self.client_name,
-            "timestamp": self.timestamp
-        }
-
 
 BASE.metadata.create_all(engine)
 
@@ -88,15 +80,17 @@ def get_db():
 
 
 @app.post('/')
-def hello_world(request: requestModel,  db: Session = Depends(get_db)):
-
-    booking = Booking(client_name=request.client_name)
-    print(
-        f"Before insert >> Searching for name {booking.client_name} in bbdd >> {db.query(Booking).filter(Booking.client_name == request.client_name).first()})")
-    db.add(booking)
-    db.commit()
-    db.refresh(booking)
-    print(
-        f"After insert >> Searching for name {Booking.client_name} in bbdd >> {db.query(Booking).filter(Booking.client_name == request.client_name).first()})")
-
-    return {'response': f'Created booking >> {booking.to_dict()}'}
+def create_booking(request: requestModel,  db: Session = Depends(get_db)):
+    try:
+        booking = Booking(client_name=request.client_name)
+        print(
+            f"Before insert >> Searching for name {booking.client_name} in bbdd >> {db.query(Booking).filter(Booking.client_name == request.client_name).first()})")
+        db.add(booking)
+        print(
+            f"After insert >> Searching for name {Booking.client_name} in bbdd >> {db.query(Booking).filter(Booking.client_name == request.client_name).first()})")
+        db.commit()
+        db.refresh(booking)
+        return {'response': f'Created booking >> {booking.__dict__}'}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))

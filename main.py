@@ -112,6 +112,13 @@ if __name__ == "__main__":
     DB_NAME = os.getenv("DB_NAME", "test_db")
     SQL_DIRECTORY = os.getenv("SQL_DIRECTORY", "./app/factiva_data/sql")
 
+    print(SQL_DIRECTORY)
+    print(DB_TYPE)
+    print(DB_HOST)
+    print(DB_PORT)
+    print(DB_USER)
+    print(DB_PASSWORD)
+
     # Construir la URL de conexión según el tipo de base de datos
     if DB_TYPE == "mysql":
         DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"

@@ -10,6 +10,8 @@ services:
       - ./factiva_data/sql:/app/sql  # Monta los scripts SQL en /app/sql dentro del contenedor
     env_file:
       - .env  # Carga variables de entorno desde .env
+    ports:
+      - "80:80"
     depends_on:
       db:
         condition: service_healthy  # Espera a que MySQL esté listo antes de iniciar

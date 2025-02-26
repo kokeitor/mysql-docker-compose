@@ -9,9 +9,9 @@ COPY . .
 
 # Instala dependencias de Python sin usar caché
 RUN pip install --no-cache-dir -r requirements.txt
-
+RUN ls -la
 
 EXPOSE 80
 
 ENTRYPOINT ["python"] 
-CMD ["main.py"]
+CMD ["python","main.py"]

@@ -1,0 +1,6 @@
+# Ignorar directorios específicos
+factiva_data/
+
+# Ignorar archivos específicos
+Dockerfile
+docker-compose.yml

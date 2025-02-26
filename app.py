@@ -54,11 +54,22 @@ BASE = declarative_base()
 class Booking(BASE):
     __tablename__ = "reservas"
 
-    id = Column(Integer, autoincrement=True, unique=True,
-                nullable=False, primary_key=True)
-    client_name = Column(String(50), nullable=False)
-    timestamp = Column(String, nullable=False,
-                       default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    id = Column(
+        Integer,
+        autoincrement=True,
+        unique=True,
+        nullable=False,
+        primary_key=True
+    )
+    client_name = Column(
+        String(50),
+        nullable=False
+    )
+    timestamp = Column(
+        String,
+        nullable=False,
+        default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    )
 
 
 BASE.metadata.create_all(engine)

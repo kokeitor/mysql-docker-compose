@@ -55,7 +55,7 @@ class Booking(BASE):
     id = Column(Integer, autoincrement=True, unique=True,
                 nullable=False, primary_key=True)
     client_name = Column(String(50), nullable=False)
-    timestamp = Column(DateTime, nullable=False,
+    timestamp = Column(String, nullable=False,
                        default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
     def __repr__(self):
@@ -94,6 +94,8 @@ def hello_world(request: requestModel,  db: Session = Depends(get_db)):
     print(
         f"Before insert >> Searching for name {booking.client_name} in bbdd >> {db.query(Booking).filter(Booking.client_name == request.client_name).first()})")
     db.add(booking)
+    db.commit()
+    db.refresh(booking)
     print(
         f"After insert >> Searching for name {Booking.client_name} in bbdd >> {db.query(Booking).filter(Booking.client_name == request.client_name).first()})")
 

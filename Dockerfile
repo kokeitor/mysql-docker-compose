@@ -4,15 +4,14 @@ FROM python:3.12.9-alpine3.21
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia solo el archivo de dependencias primero (mejor caché en Docker)
-COPY requirements.txt requirements.txt
+# Luego copia el resto del código
+COPY . .
 
 # Instala dependencias de Python sin usar caché
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Luego copia el resto del código
-COPY . .
 
 EXPOSE 80
 
-CMD ["python", "main.py"]
+ENTRYPOINT ["python"] 
+CMD ["main.py"]

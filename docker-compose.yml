@@ -5,7 +5,7 @@ services:
     build:
       context: .  # Ruta al directorio que contiene tu Dockerfile
       dockerfile: Dockerfile  # Opcional si el nombre es distinto
-    container_name: sqlalchemy_app
+    container_name: orm_app
     volumes:
       - ./factiva_data/sql:/app/sql  # Monta los scripts SQL en /app/sql dentro del contenedor
     env_file:

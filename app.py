@@ -56,7 +56,7 @@ class Booking(BASE):
                 nullable=False, primary_key=True)
     client_name = Column(String(50), nullable=False)
     timestamp = Column(DateTime, nullable=False,
-                       default=datetime.datetime.now())
+                       default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
     def __repr__(self):
         return f"Clients(id={self.id}, name='{self.name}', timestamp='{self.timestamp}')"

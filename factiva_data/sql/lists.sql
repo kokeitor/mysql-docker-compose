@@ -1,6 +1,6 @@
 -- Descripcion : Listas Factiva
 -- Version : 1.0
--- Fecha : 2025-02-27T16:18:01
+-- Fecha : 2025-02-27T16:56:40
 -- Autor : Jorge resino
     
 

@@ -8,6 +8,7 @@ services:
     container_name: orm_app
     volumes:
       - ./factiva_data/sql:/app/sql  # Monta los scripts SQL en /app/sql dentro del contenedor
+      - ./factiva_data/pre:/app/pre  # Monta los scripts SQL en /app/sql dentro del contenedor
     env_file:
       - .env  # Carga variables de entorno desde .env
     ports:

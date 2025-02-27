@@ -1,6 +1,6 @@
 -- Descripcion : Asociaciones de Data (Personas y Entidades Factiva)
 -- Version : 1.0
--- Fecha : 2025-02-27T15:45:51
+-- Fecha : 2025-02-27T16:18:01
 -- Autor : Jorge resino
     
 

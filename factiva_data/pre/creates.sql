@@ -233,7 +233,7 @@ CREATE TABLE DATA (
   gender VARCHAR(255),
   active_status VARCHAR(255),
   deceased VARCHAR(255),
-  profile_notes VARCHAR(255),
+  profile_notes TEXT,
   date DATE
 );
 

@@ -35,7 +35,7 @@ class DatabaseManager:
         self.Session = sessionmaker(bind=self.engine)
         self.session = self.Session()
 
-    def execute_script(self, script_path: str):
+    def __execute_script(self, script_path: str):
         """
         Ejecuta un archivo SQL en la base de datos.
 
@@ -88,7 +88,7 @@ class DatabaseManager:
 
         for sql_file in sql_files:
             script_path = os.path.join(self.sql_directory, sql_file)
-            self.execute_script(script_path)
+            self.__execute_script(script_path)
 
         print("[INFO] Todos los scripts SQL han sido ejecutados correctamente.")
 

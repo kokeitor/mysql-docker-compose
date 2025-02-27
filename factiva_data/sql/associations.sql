@@ -1,9 +1,11 @@
 -- Descripcion : Asociaciones de Data (Personas y Entidades Factiva)
 -- Version : 1.0
--- Fecha : 2025-02-27T11:07:12
+-- Fecha : 2025-02-27T15:45:51
 -- Autor : Jorge resino
     
 
+TRUNCATE TABLE DBTEST.ASSOCIATIONS_DATA;
+COMMIT;
 INSERT INTO ASSOCIATIONS_DATA (data_id, record_type, associated_record_id, code, ex_status, date) VALUES ('2379897', 'SpecialEntity', '2375743', '45', 'Yes', STR_TO_DATE('20250227', '%Y%m%d'));
 INSERT INTO ASSOCIATIONS_DATA (data_id, record_type, associated_record_id, code, ex_status, date) VALUES ('2379897', 'SpecialEntity', '2379741', '35', 'Yes', STR_TO_DATE('20250227', '%Y%m%d'));
 INSERT INTO ASSOCIATIONS_DATA (data_id, record_type, associated_record_id, code, ex_status, date) VALUES ('2379897', 'SpecialEntity', '2379784', '43', 'Yes', STR_TO_DATE('20250227', '%Y%m%d'));
@@ -308,5 +310,6 @@ INSERT INTO ASSOCIATIONS_DATA (data_id, record_type, associated_record_id, code,
 INSERT INTO ASSOCIATIONS_DATA (data_id, record_type, associated_record_id, code, ex_status, date) VALUES ('2388802', 'SpecialEntity', '2388801', '35', 'No', STR_TO_DATE('20250227', '%Y%m%d'));
 INSERT INTO ASSOCIATIONS_DATA (data_id, record_type, associated_record_id, code, ex_status, date) VALUES ('2389006', 'SpecialEntity', '1047707', '43', 'Yes', STR_TO_DATE('20250227', '%Y%m%d'));
 
-
+TRUNCATE TABLE DBTEST.ASSOCIATIONS_DATA;
+COMMIT;
 

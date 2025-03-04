@@ -79,6 +79,12 @@ class requestModel(BaseModel):
     client_name: str
 
 
+class responseModel(BaseModel):
+    id: str
+    client_name: str
+    timestamp: str
+
+
 app = FastAPI()
 
 
@@ -90,7 +96,7 @@ def get_db():
         db.close()
 
 
-@app.post('/')
+@app.post('/', response_model=responseModel)
 def create_booking(request: requestModel,  db: Session = Depends(get_db)):
     try:
         booking = Booking(client_name=request.client_name)
@@ -101,7 +107,8 @@ def create_booking(request: requestModel,  db: Session = Depends(get_db)):
             f"After insert >> Searching for name {Booking.client_name} in bbdd >> {db.query(Booking).filter(Booking.client_name == request.client_name).first()})")
         db.commit()
         db.refresh(booking)
-        return {'response': f'Created booking >> {booking.__dict__}'}
+
+        return responseModel(id=booking.id, client_name=booking.client_name, timestamp=booking.timestamp)
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
